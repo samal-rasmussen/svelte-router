@@ -1,10 +1,17 @@
 import { initPathRouter } from '@bjornlu/svelte-router'
-import Home from './routes/Home.svelte'
-import User from './routes/User.svelte'
+import Main from './Main.svelte'
+import Overlay from './Overlay.svelte'
 
 // Use `initHashRouter` for hash mode
 initPathRouter([
-  { path: '/', component: Home },
-  { path: '/user/:id', component: User },
-  { path: '/secret', redirect: '/' }
-])
+  {
+    path: '/',
+    component: Main,
+    children: [
+      {
+        path: '/overlay',
+        component: Overlay,
+      }
+    ],
+  },
+]);
